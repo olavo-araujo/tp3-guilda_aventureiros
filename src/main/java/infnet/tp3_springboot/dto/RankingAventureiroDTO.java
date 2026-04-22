@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class RankingAventureiroDTO {
     private String nome;
     private Long totalParticipacoes;
-    private Double somaRecompensas;
+    private Long somaRecompensas;
     private Long totalMvps;
 }

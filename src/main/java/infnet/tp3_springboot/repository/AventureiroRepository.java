@@ -25,7 +25,7 @@ public interface AventureiroRepository extends JpaRepository<Aventureiro, Long> 
                                                 @Param("nivelMinimo") Integer nivelMinimo,
                                                 Pageable pageable);
 
-    @Query("SELECT new infnet.tp3_springboot.dto.RankingAventureiroDTO(a.nome, COUNT(p), SUM(p.recompensaOuro), SUM(CASE WHEN p.destaque = true THEN 1L ELSE 0L END)) " +
+    @Query("SELECT new infnet.tp3_springboot.dto.RankingAventureiroDTO(a.nome, COUNT(p), SUM(p.recompensaOuro), SUM(CASE WHEN p.destaqueMvp = true THEN 1L ELSE 0L END)) " +
             "FROM ParticipacaoMissao p JOIN p.aventureiro a JOIN p.missao m " +
             "WHERE (CAST(:inicio AS timestamp) IS NULL OR m.dataCriacao >= :inicio) " +
             "AND (CAST(:fim AS timestamp) IS NULL OR m.dataCriacao <= :fim) " +
