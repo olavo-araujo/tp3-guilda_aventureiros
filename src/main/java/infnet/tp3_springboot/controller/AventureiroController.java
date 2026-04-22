@@ -72,12 +72,14 @@ public class AventureiroController {
     }
 
     @GetMapping("/busca")
-    public ResponseEntity<Page<Aventureiro>> buscarPorNome(
+    public ResponseEntity<Page<AventureiroResumoDTO>> buscarPorNome(
             @RequestParam String nome,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 
-        Page<Aventureiro> resultado = aventureiroService.buscarPorNome(nome, PageRequest.of(page, size));
+        Page<AventureiroResumoDTO> resultado = aventureiroService.buscarPorNome(nome, PageRequest.of(page, size))
+                .map(a -> new AventureiroResumoDTO(a.getId(), a.getNome(), a.getClasse(), a.getNivel(), a.getAtivo()));
+
         return ResponseEntity.ok(resultado);
     }
 

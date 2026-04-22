@@ -1,5 +1,6 @@
 package infnet.tp3_springboot.domain.aventura;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import infnet.tp3_springboot.enums.Especie;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -14,6 +15,7 @@ public class Companheiro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "aventureiro_id", nullable = false, unique = true)
     private Aventureiro aventureiro;
